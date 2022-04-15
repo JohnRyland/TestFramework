@@ -5,6 +5,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
+#include <cassert>
 #include <algorithm>
 #include <chrono>
 
@@ -91,15 +92,19 @@ int main(int argc, const char* argv[])
       printf("[ RUN      ] %s\n", item.m_name);
       auto testStartTime = std::chrono::system_clock().now();
 
+#ifdef __cpp_exceptions
       try
+#endif
       {
         item.m_func(1);
       }
+#ifdef __cpp_exceptions
       catch(...)
       {
         printf("Test failed with an exception: %s\n", item.m_name);
         exit(-1);
       }
+#endif
 
       auto testEndTime = std::chrono::system_clock().now();
       item.m_ran = true;

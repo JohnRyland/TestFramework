@@ -1,7 +1,7 @@
 /*
    Test Framework
    Created by John Ryland on 17/3/19.
-   Copyright (C) 2019-2021 John Ryland. All rights reserved.
+   Copyright (C) 2019-2022 John Ryland. All rights reserved.
 */
 
 #pragma once
@@ -46,9 +46,11 @@ namespace UnitTest
 #define ASSERT_EQ(A, B)                        CHECK(A == B) 
 #define ASSERT_GT(A, B)                        CHECK(A > B)
 #define ASSERT_LT(A, B)                        CHECK(A < B)
-#define EXPECT_EQ(A, B)                        CHECK(A == B)
-#define EXPECT_GT(A, B)                        CHECK(A > B)
-#define EXPECT_LT(A, B)                        CHECK(A < B)
+#define ASSERT_NEAR(A, B, FABS_ERROR)          CHECK(fabs(A - B) < FABS_ERROR)
+#define EXPECT_EQ(A, B)                        EXPECT(A == B)
+#define EXPECT_GT(A, B)                        EXPECT(A > B)
+#define EXPECT_LT(A, B)                        EXPECT(A < B)
+#define EXPECT_NEAR(A, B, FABS_ERROR)          EXPECT(fabs(A - B) < FABS_ERROR)
 
 #define NAME_AND_LINE(x, y)                    NAME_AND_LINE_INTERNAL(x, y)
 #define NAME_AND_LINE_INTERNAL(x, y)           x##y
