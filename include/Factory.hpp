@@ -15,6 +15,12 @@
 ///
 /// This might also be useful for registering the modules.
 ///
+/// While this class is not the Factory of the factory pattern, these
+/// factory items can be used by a factory class to instantiate instances.
+///
+/// For example in the context of unit testing, each unit test will
+/// have an associated FactoryItem wrapper, and the unit test framework
+/// will be the factory creating instances of unit tests to run.
 template <typename T>
 struct FactoryItem
 {
