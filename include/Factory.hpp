@@ -67,7 +67,7 @@ struct FactoryItem
   Iterator end()                               { return Iterator(nullptr); }
 
 private:
-  friend ItemT::Iterator;
+  friend class ItemT::Iterator;
 
   T        m_value;
   ItemT*   m_next;
