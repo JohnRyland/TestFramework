@@ -1,7 +1,7 @@
 /*
    Factory Pattern
    Created by John Ryland on 17/3/19
-   Copyright (C) 2019-2022 John Ryland. All rights reserved.
+   Copyright (C) 2019-2023 John Ryland. All rights reserved.
 */
 
 #pragma once
@@ -21,6 +21,11 @@
 /// For example in the context of unit testing, each unit test will
 /// have an associated FactoryItem wrapper, and the unit test framework
 /// will be the factory creating instances of unit tests to run.
+///
+/// The use of this class is not limited to unit testing, it can be
+/// used for any other purpose where a list of items across compilation
+/// units are registered during program initialization in to a linked
+/// list.
 template <typename T>
 struct FactoryItem
 {
@@ -36,7 +41,7 @@ struct FactoryItem
   /// This will add 'test' to a list of Test items
   /// which can be iterated with:
   ///
-  ///     for (auto test : FactorItem<Test>::items())
+  ///     for (auto test : FactoryItem<Test>::items())
   ///
   FactoryItem(T a_value)
     : m_value(a_value)
@@ -47,7 +52,7 @@ struct FactoryItem
 
   /// This can be used to begin C++11 range-based iteration, for example:
   ///
-  ///     for (auto test : FactorItem<Test>::items())
+  ///     for (auto test : FactoryItem<Test>::items())
   ///
   static ItemT& items()                        { return *getFactoryHead(); }
 
