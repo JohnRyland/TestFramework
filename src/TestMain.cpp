@@ -18,7 +18,9 @@ void UnitTest::UnitTestAssert(bool a_expression, const char* a_expressionStr, co
   if (!a_expression)
   {
     fprintf(stderr, "\n%s:%i: Failure\n  Expected :\n    %s\n\n", a_file, a_line, a_expressionStr);
-    assert(!a_expectNotAssert);
+    bool expectNotAssert_unused = a_expectNotAssert;
+    assert(!expectNotAssert_unused);
+    a_expectNotAssert = expectNotAssert_unused;  // Avoid unused variable warning in release builds
     ++failures;
   }
 }
